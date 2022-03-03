@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class TaskInDTOToMapper implements IMapper <TaskInDTO, Task>{
+public class TaskInDTOToTask implements IMapper <TaskInDTO, Task>{
     @Override
     public Task map(TaskInDTO in) {
         Task task = new Task();
