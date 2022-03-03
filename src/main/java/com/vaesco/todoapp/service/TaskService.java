@@ -2,6 +2,7 @@ package com.vaesco.todoapp.service;
 
 import com.vaesco.todoapp.persistence.entity.Task;
 import com.vaesco.todoapp.persistence.repository.TaskRepository;
+import com.vaesco.todoapp.service.dto.TaskInDTO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,7 +16,9 @@ public class TaskService {
         this.repository = repository;
     }
 
-    public Task createTask(Task task) {
+    public Task createTask(TaskInDTO task) {
+
+        //this.repository.save()
         return null;
     }
 
