@@ -6,8 +6,10 @@ import com.vaesco.todoapp.persistence.entity.TaskStatus;
 import com.vaesco.todoapp.service.TaskService;
 import com.vaesco.todoapp.service.dto.TaskInDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -38,6 +40,13 @@ public class TaskController {
     @GetMapping("/status/{status}")
     public List<Task> findAllTaskStatus(@PathVariable("status") TaskStatus status) {
         return taskService.findAllByTaskStatus(status);
+    }
+
+    @PatchMapping("/mark_and_finished/{id}")
+    public ResponseEntity<Void> markAndFinished(@PathVariable("id") Long id){
+        this.taskService.updateTaskFinished(id);
+        return ResponseEntity.noContent().build();
+        // Responde como no content por el cambio de status de finalizada la tarea
     }
 
 }

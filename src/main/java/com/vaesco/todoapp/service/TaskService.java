@@ -6,6 +6,7 @@ import com.vaesco.todoapp.persistence.entity.TaskStatus;
 import com.vaesco.todoapp.persistence.repository.TaskRepository;
 import com.vaesco.todoapp.service.dto.TaskInDTO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,12 +30,19 @@ public class TaskService {
         return this.repository.save(task);
     }
 
+
     public List<Task> findAll() {
         return this.repository.findAll();
     }
 
+
     public List<Task> findAllByTaskStatus(TaskStatus status) {
         return this.repository.findAllByTaskStatus(status);
+    }
+
+    @Transactional
+    public void updateTaskFinished(Long id) {
+        this.repository.updateTaskAndFinished(id);
     }
 
 }
