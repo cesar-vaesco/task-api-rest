@@ -2,6 +2,7 @@ package com.vaesco.todoapp.service;
 
 import com.vaesco.todoapp.mapper.TaskInDTOToTask;
 import com.vaesco.todoapp.persistence.entity.Task;
+import com.vaesco.todoapp.persistence.entity.TaskStatus;
 import com.vaesco.todoapp.persistence.repository.TaskRepository;
 import com.vaesco.todoapp.service.dto.TaskInDTO;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,10 @@ public class TaskService {
 
     public List<Task> findAll() {
         return this.repository.findAll();
+    }
+
+    public List<Task> findAllByTaskStatus(TaskStatus status) {
+        return this.repository.findAllByTaskStatus(status);
     }
 
 }
